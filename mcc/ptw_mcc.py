@@ -39,6 +39,8 @@ class PTW_mcc():
             - Field Type will be IRREGULAR, this may limit some analysis options in
               MEPHYSTO 
             - Reference field: 10x10, 5cm deep, ISOCENTER 
+            - SCD assumed 1000mm
+            - Nominal dmax 20mm
 
         It is instanstiated from: 
             • RayCurves object, defined in raystation_curves.py 
@@ -49,12 +51,15 @@ class PTW_mcc():
             • dose: list 
             • f_root: a path to a root directory of the following form 
                 root/ 
+                    phantom_curves.py
                     mcc/
                         template/
                             PROFILE.mcc
                             PDD.mcc
                         raystation_data_out/
+                        ptw_mcc.py
                     rs_macros
+                        raystation_curves.py
                     
 
     '''
@@ -172,6 +177,7 @@ class PTW_mcc():
     def update_data_block(self, positions, measurements):
         '''
             Update a data block in .mcc file  
+            Assumes posititions are in cm, and resulting .mcc files need to be in mm. 
         '''
         start_index = [index for index in range(len(self.mcc)) 
         if "BEGIN_DATA" in self.mcc[index]][0]
@@ -180,7 +186,7 @@ class PTW_mcc():
         one = "{:.4e}".format(1)
         for pos, meas in zip(positions, measurements):
             start_index += 1
-            pos = str(round(pos,2))
+            pos = str(10*round(pos,2))
             meas = "{:.4e}".format(meas)
             line = "\t\t".join(["\t", pos, meas, one]) + "\n"
             self.mcc.insert(

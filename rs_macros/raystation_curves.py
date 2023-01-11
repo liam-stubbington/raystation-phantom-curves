@@ -60,9 +60,11 @@ class RayCurves():
                     • GUN 
                     • LEFT 
                     • RIGHT 
+                    • AXIS
             Crossplane profiles go from RIGHT POI to LEFT POI. 
             Inplane profiles go from GUN to TARGET POI irresepctive of their position. 
             Profiles are taken at the depths of all POIs that have "cm" in their label. 
+            PDDs are taken from the AXIS POI in the ANT POST direction. 
             No check of RayStation state before execution. 
             HINT: use descriptive field names and IDs. 
     '''

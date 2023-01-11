@@ -17,7 +17,7 @@ from ptw_mcc import PTW_mcc
 
 # -- CONSTANTS -- 
 beam_set = get_current("BeamSet")
-PROJECT_ROOT = "//cuh_nas120/Medical Physics & Clinical Engineering/Userdata/Radiotherapy/Liam Stubbington/beam-model"
+PROJECT_ROOT = os.getcwd() 
 
 # -- MAIN -- #
 if __name__ == "__main__":           
