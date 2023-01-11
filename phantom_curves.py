@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
         pdd_mcc.write_mcc()
 
-        for y, d in zip(rc.crossplane_profiles, rc.depths):
+        for y, d in zip(rc.crossplane_profiles, rc.cax_depths):
             crossplane_profile_mcc = PTW_mcc(
                 rc,
                 curve_type = "x profile",
@@ -52,7 +52,7 @@ if __name__ == "__main__":
             )
             crossplane_profile_mcc.write_mcc() 
 
-        for y, d in zip(rc.inplane_profiles, rc.depths):
+        for y, d in zip(rc.inplane_profiles, rc.cax_depths):
             inplane_profile_mcc = PTW_mcc(
                 rc,
                 curve_type = "y profile",

@@ -25,7 +25,8 @@ class RayCurves():
                 This may fail for beams of type not 3D-CRT 
             depths: --> list 
                 Depths use pois with cm in their label. 
-                The depth is the ANT-POST distance from the AXIS poi. 
+            cax_depths: --> list 
+                As above, only the depth is the ANT-POST distance from the AXIS poi. 
             FoR: --> str 
                 DICOM FoR UID from current image set.  
             ssd: --> float
@@ -45,7 +46,6 @@ class RayCurves():
         Methods: 
             return_field_size_for_beam 
             return_energy_for_beam
-            return_depths_along_CAX
             get_dose_at_points
             get_crossplane_profiles 
             get_inplane_profiles 
@@ -88,7 +88,15 @@ class RayCurves():
         self.energy = self.return_energy_for_beam() 
         self.ssd = self.beam_dose.ForBeam.GetSSD() * 10.0
         self.field_size = self.return_field_size_for_beam() 
-        self.depths = self.return_depths_along_CAX()
+        self.depths = [
+            poi.Point["y"]
+            for poi in self.pois 
+            if "cm" in poi.OfPoi.Name
+        ]
+        self.cax_depths = [
+            poi.Point["y"]-self.pois["AXIS"].Point["y"]
+            for poi in self.pois if "cm" in poi.OfPoi.Name
+        ]
 
         self.FoR = exam.EquipmentInfo.FrameOfReference
 
@@ -111,15 +119,6 @@ class RayCurves():
             e.g 6X FFF will come across as 6.3. 
         '''
         return  str(float(self.beam_dose.ForBeam.BeamQualityId) + 0.3)
-
-    def return_depths_along_CAX(self):
-        '''
-            Returns the list of depths of d_Xcm with respect to the AXIS POI 
-        '''
-        return [
-            poi.Point["y"]-self.pois["AXIS"].Point["y"]
-            for poi in self.pois if "cm" in poi.OfPoi.Name
-        ] 
 
     def get_dose_at_points(self, points):
         '''
