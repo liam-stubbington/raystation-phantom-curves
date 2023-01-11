@@ -1,0 +1,13 @@
+name,width,height,description
+3x3,3,3,3x3 BeamVerif
+5x3,5,3,5x3 BeamVerif
+3x5,3,5,3x5 BeamVerif
+5x5,5,5,5x5 BeamVerif
+5x10,5,10,5x10 BeamVerif
+10x5,10,5,10x5 BeamVerif
+10x10,10,10,10x10 BeamVerif
+15x5,15,5,15x5 BeamVerif
+15x15,15,15,15x15 BeamVerif
+5x15,5,15,5x15 BeamVerif
+20x20,20,20,20x20 BeamVerif
+40x40,40,40,40x40 BeamVerif
