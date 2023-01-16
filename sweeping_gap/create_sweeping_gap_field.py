@@ -8,6 +8,13 @@ class ASyncSweepingGapField():
     '''
         This class is used to manipulate Varian's DLG RT Plan files to produce async. sweeping gap fields. 
         You must give it a starting point path to an existing RT Plan file.
+
+        Known Limitations: 
+         • The initial jaw position for the 2mm DLG beam are -70, -50 --> 50, 70
+           i.e. 12cm of travel 
+         • When these are turned in to aSG beams by offsetting adjacent pairs of leaves
+           part of the initial MLC position will be in the open 
+
     '''
     def __init__(self, f_name: str, f_root: str = None):
         if f_root is None:
