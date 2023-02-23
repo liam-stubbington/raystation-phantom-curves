@@ -15,7 +15,7 @@ def remove_all():
     for beam in patient_db.ListAllBeamCommissioningFieldNames():
         patient_db.RemoveBeamCommissioningField(FieldName = beam)
 
-def add_all_to_list(desc: str, suffix: str = None): 
+def add_all_to_list(desc: str, suffix: str = ''): 
     # Add all beams in current beam_set to Commissioning Fields list
     for beam in beam_set.Beams:
         patient_db.CopyBeamToBeamCommissioningField(
@@ -45,7 +45,6 @@ def add_all_to_beamset(qi: str = "6", ssd: int = 85, filt: str = None):
 
 
 if __name__ == "__main__":
-    list_all()
-    add_all_to_beamset(
-        ssd=85,
-    )
+	#remove_all()
+	#add_all_to_list('LSt 22-02-2023',suffix = '_LSt')
+	list_all()
