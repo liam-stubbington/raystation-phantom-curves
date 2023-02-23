@@ -173,3 +173,7 @@ poetry.toml
 # Liam Stubbington, RT Physicist 
 # Cambridge University Hospitals NHS Foundation Trust 
 /data
+*.mcc
+RayStation12A_beam-modelling.pptx
+README.html
+/fff
