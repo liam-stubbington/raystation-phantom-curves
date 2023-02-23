@@ -4,6 +4,9 @@ This project contains a set of python modules that expedite the extraction of pr
 
 The files are exported as a *bare bones* *.mcc* file which can opened in PTW programs for further analysis. 
 
+Requires: numpy==1.24.1
+
+
 ---
 ## QuickStart Guide 
 
